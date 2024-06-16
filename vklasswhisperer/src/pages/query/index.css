@@ -5,11 +5,24 @@
 }
 
 .button_query {
-    width: 70px;
+    width: 100px;
     height: 45px;
-    margin-left: 20px;
+    margin-top: 10px;
     border: none;
     background-color: cadetblue;
     color: white;
-    
+    justify-content: right;
+
+}
+.button-container {
+
+    display: flex;
+    justify-content: center; /* Aligns the button to the right of the container */
+    width: 100%; /* Ensures the container takes full width if not already set */
+}
+.clockloader {
+    margin-top: 80px;
+    display: flex;
+    justify-content: center; /* Aligns the button to the right of the container */
+    width: 100%; /* Ensures the container takes full width if not already set */
 }

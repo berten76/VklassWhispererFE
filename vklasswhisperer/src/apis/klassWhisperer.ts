@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const ROUTE = "http://127.0.0.1:8000/"
+const ROUTE = "https://vklasswhispererbe.azurewebsites.net/"
 
 interface QueryRequest {
     query: string;

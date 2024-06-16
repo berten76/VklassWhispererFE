@@ -1,4 +1,4 @@
 interface ResponseModel{
     response: string;
-    sources: string;
+    sources: string[];
 }

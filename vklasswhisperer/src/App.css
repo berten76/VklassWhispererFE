@@ -1,7 +1,7 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+
   text-align: center;
 }
 
@@ -33,9 +33,7 @@
   }
 }
 
-.card {
-  padding: 2em;
-}
+
 
 .read-the-docs {
   color: #888;
@@ -45,10 +43,45 @@
   text-align: center;
 }
 
+.card {
+  margin-top: 50px;
+  width: 100%;
+  max-width: 800px;
+  margin-left: 20px;
+  margin-right: 20px;
+  justify-content: center;
+}
+
 .input-large {
   margin-top: 20px;
-  width: 600px;
-  height: 20px;
-  padding: 10px;
+width: 100%;
+  height: 30px;
+  
   font-size: 16px;
+}
+
+.bold {
+  margin-top: 40px;
+  font-weight: bold;
+}
+.flex-container {
+  display: flex;
+  justify-content: center;  /* Center horizontally */
+       /* Center vertically */
+  height: 100vh;            /* Full height of the viewport */
+}
+
+.leftCentered {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left; 
+  text-align: left;
+}
+
+.verticalContainer {
+  width: 100%; /* Container takes the full width */
+  margin: 0 auto; /* Centers the container horizontally */
+  padding: 20px; /* Padding around the container */
+  box-sizing: border-box; /* Includes padding in the width calculation */
 }

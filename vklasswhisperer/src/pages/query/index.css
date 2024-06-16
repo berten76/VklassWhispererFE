@@ -1,0 +1,15 @@
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* This line centers vertically if needed */
+}
+
+.button_query {
+    width: 70px;
+    height: 45px;
+    margin-left: 20px;
+    border: none;
+    background-color: cadetblue;
+    color: white;
+    
+}

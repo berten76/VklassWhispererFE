@@ -28,7 +28,7 @@ const QueryPage: FC<Props> = () => {
   return (
     <div>
       <h1 className="center">Vklass whisperer</h1>
-      <div>Skriv in en fråga</div>
+      <div>Skriv in en fråga!</div>
       <div>
         <input className="input-large" onChange={handleQueryChanged} />
         <button className="button_query" onClick={handleOnClickQuery}>Fråga</button>

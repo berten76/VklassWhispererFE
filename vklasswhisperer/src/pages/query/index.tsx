@@ -1,6 +1,6 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import "./index.css";
-import { queryVklass } from "../../apis/klassWhisperer";
+import { downloadPDF, queryVklass } from "../../apis/klassWhisperer";
 import { ClockLoader } from "react-spinners";
 
 interface Props {}
@@ -11,6 +11,8 @@ const QueryPage: FC<Props> = () => {
   const [sources, setSources] = useState<string[]>([]);
   const [showSpinner, setShowSpinner] = useState<boolean>(false);
 
+  useEffect(() => {});
+
   const handleOnClickQuery = async () => {
     setResponse([]);
     setSources([]);
@@ -18,15 +20,27 @@ const QueryPage: FC<Props> = () => {
     const response = await queryVklass(query);
     setShowSpinner(false);
     if (response) {
-      console.log("rep-----------");
-      console.log(response.sources);
-
-      var responsedLocal = response.response.split("\n");
-      console.log(responsedLocal.length);
-      setResponse(responsedLocal);
-
-      console.log(sources.length);
-      setSources(response.sources);
+      if (response.send_pdf) {
+        try {
+          const blob = await downloadPDF(response.response);
+          const downloadUrl = window.URL.createObjectURL(blob);
+          const link = document.createElement("a");
+          link.href = downloadUrl;
+          link.setAttribute("download", response.response);
+          document.body.appendChild(link);
+          link.click();
+          link.parentNode?.removeChild(link);
+          window.URL.revokeObjectURL(downloadUrl); // Clean up to release memory
+          setResponse(["Veckobrevet har laddats ner"])
+        } catch (error) {
+          setResponse(["Misslyckades med att ladda ner filen"])
+          console.error("Error in downloading the file:", error);
+        }
+      } else {
+        var responsedLocal = response.response.split("\n");
+        setResponse(responsedLocal);
+        setSources(response.sources);
+      }
     }
   };
 
@@ -38,7 +52,7 @@ const QueryPage: FC<Props> = () => {
     <div className="flex-container">
       <div className="card">
         <h1 className="">Vklass whisperer</h1>
-        <div>Skriv in en fråga!</div>
+        <div>Skriv in en fråga.</div>
 
         <input className="input-large" onChange={handleQueryChanged} />
         <div className="button-container">

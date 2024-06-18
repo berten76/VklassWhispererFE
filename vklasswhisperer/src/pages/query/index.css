@@ -21,7 +21,7 @@
     width: 100%; /* Ensures the container takes full width if not already set */
 }
 .clockloader {
-    margin-top: 80px;
+    margin-top: 40px;
     display: flex;
     justify-content: center; /* Aligns the button to the right of the container */
     width: 100%; /* Ensures the container takes full width if not already set */
